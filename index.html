@@ -237,9 +237,9 @@ a:link, a:active, a:visited, a:focus a:hover {text-decoration:none;}
 </div></div>
 
     <script>
-        function setCookie(name, value, days) {
+        function setCookie(name, value, hours) {
             const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
             const expires = "expires=" + date.toUTCString();
             document.cookie = name + "=" + value + ";" + expires + ";path=/";
         }
@@ -259,20 +259,16 @@ a:link, a:active, a:visited, a:focus a:hover {text-decoration:none;}
             let pageNumber = parseInt(getCookie('pageNumber')) || 1;
             if (pageNumber < 50) {  // Batasi hingga halaman 50
                 const nextPage = pageNumber + 1;
-                setCookie('pageNumber', nextPage, 1);
+                setCookie('pageNumber', nextPage, 1);  // Cookie berlaku selama 1 jam
                 const newUrl = `https://pak-iju1.pages.dev/page${nextPage}.html`;
                 window.location.href = newUrl;
             }
         }
 
+        // Panggil fungsi redirect dengan jeda setelah halaman dimuat
         window.onload = function() {
-            let pageNumber = parseInt(getCookie('pageNumber')) || 1;
-            if (pageNumber > 1 && pageNumber <= 50) {
-                redirect();
-            } else if (pageNumber <= 50) {
-                setTimeout(redirect, 30000);
-            }
-        }
+            setTimeout(redirect, 50000); // Jeda 5 detik sebelum pengalihan
+        };
     </script>
 
 
