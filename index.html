@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Redirecting...</title>
-  <meta name="robots" content="noindex">
   <script>
-    // Ambil parameter ?v=
-    const params = new URLSearchParams(window.location.search);
-    const videoId = params.get("v");
+    const path = window.location.pathname; // misal: /e/bzj0jeilcfsb
+    const parts = path.split('/');
+    const videoId = parts.length > 2 ? parts[2] : null;
 
     if (videoId) {
-      // Redirect ke YouTube
-      window.location.href = "https://www.youtube.com/watch?v=" + encodeURIComponent(videoId);
+      // Redirect ke domain tujuan dengan path sama
+      window.location.href = "https://do7go.com/e/" + encodeURIComponent(videoId);
     } else {
-      // Jika tidak ada parameter v
-      document.addEventListener("DOMContentLoaded", function () {
-        document.body.innerHTML = "<h2>Video tidak ditemukan.</h2>";
-      });
+      document.body.innerHTML = "<h2>ID tidak ditemukan.</h2>";
     }
   </script>
 </head>
 <body>
-  <p>Redirecting to YouTube...</p>
+  <p>Redirecting...</p>
 </body>
 </html>
