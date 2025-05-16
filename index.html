@@ -1,162 +1,26 @@
-
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="300">
-    <title>Website Sedang Dalam Pemeliharaan</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            height: 100vh;
-            background: linear-gradient(45deg, #ff5733, #900c3f);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            animation: backgroundMove 10s ease-in-out infinite;
-        }
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <meta name="robots" content="noindex">
+  <script>
+    // Ambil parameter ?v=
+    const params = new URLSearchParams(window.location.search);
+    const videoId = params.get("v");
 
-        @keyframes backgroundMove {
-            0% {
-                background: linear-gradient(45deg, #ff5733, #900c3f);
-            }
-            50% {
-                background: linear-gradient(45deg, #900c3f, #ff5733);
-            }
-            100% {
-                background: linear-gradient(45deg, #ff5733, #900c3f);
-            }
-        }
-
-        .overlay {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            padding: 40px;
-            width: 90%;
-            max-width: 650px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            animation: fadeIn 2s ease;
-        }
-
-        p {
-            font-size: 1.4em;
-            margin-bottom: 20px;
-            animation: fadeIn 3s ease;
-        }
-
-        .countdown {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 4s ease;
-        }
-
-        .countdown span {
-            display: inline-block;
-            margin: 0 15px;
-            padding: 20px;
-            background-color: #00ff00;
-            border-radius: 10px;
-            font-size: 2.2em;
-            color: #333;
-            box-shadow: 0 6px 12px rgba(0, 255, 0, 0.3);
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .countdown span:hover {
-            background-color: #ff5733;
-            transform: scale(1.1);
-        }
-
-        .countdown span:active {
-            transform: scale(0.9);
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .button {
-            margin-top: 30px;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            background-color: #00ff00;
-            border: none;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #007d00;
-        }
-
-    </style>
+    if (videoId) {
+      // Redirect ke YouTube
+      window.location.href = "https://www.youtube.com/watch?v=" + encodeURIComponent(videoId);
+    } else {
+      // Jika tidak ada parameter v
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.innerHTML = "<h2>Video tidak ditemukan.</h2>";
+      });
+    }
+  </script>
 </head>
 <body>
-    <div class="overlay">
-        <h1>Website Sedang Dalam Pemeliharaan</h1>
-        <p>Mohon maaf, kami sedang melakukan pemeliharaan untuk memberikan pengalaman yang lebih baik.</p>
-        <div class="countdown" id="countdown">
-            <span id="hours">00</span> 
-            <span id="minutes">00</span> 
-            <span id="seconds">00</span>
-        </div>
-        <button class="button" onclick="window.location.reload()">Coba Lagi</button>
-    </div>
-
-    <script>
-        // Set waktu selesai pemeliharaan (misal 1 jam ke depan)
-        var countDownDate = new Date().getTime() + 60 * 60 * 1000;
-
-        // Update countdown setiap detik
-        var x = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = countDownDate - now;
-
-            // Hitung waktu
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Tampilkan hasil di elemen dengan id "countdown"
-            document.getElementById("hours").innerHTML = formatTime(hours);
-            document.getElementById("minutes").innerHTML = formatTime(minutes);
-            document.getElementById("seconds").innerHTML = formatTime(seconds);
-
-            // Jika countdown selesai
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "Pemeliharaan selesai!";
-            }
-        }, 1000);
-
-        // Format waktu agar selalu dua digit
-        function formatTime(time) {
-            return time < 10 ? "0" + time : time;
-        }
-    </script>
+  <p>Redirecting to YouTube...</p>
 </body>
 </html>
